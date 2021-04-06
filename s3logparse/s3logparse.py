@@ -21,10 +21,8 @@ def raw_fields(line):
     for first_char in line_chars:
         if first_char == '[':
             yield ''.join(takewhile(lambda c: c != ']', line_chars))
-            next(line_chars)
         elif first_char == '"':
             yield ''.join(takewhile(lambda c: c != '"', line_chars))
-            next(line_chars)
         else:
             yield first_char + ''.join(
                 list(takewhile(lambda c: c != ' ', line_chars))
